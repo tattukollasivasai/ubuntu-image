@@ -1,0 +1,25 @@
+name: My First Workflow
+
+# 1. Define the trigger event
+on:
+  push:
+    branches: [ "main" ]
+
+# 2. Define what jobs to run
+jobs:
+  build-and-greet:
+    # Choose a runner environment (Linux, Windows, or macOS)
+    runs-on: ubuntu-latest
+
+    # 3. Define the sequential steps
+    steps:
+      # Action provided by GitHub to pull your repository code into the runner
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Run a simple shell command
+      - name: Print a welcome message
+        run: |
+          echo "Hello from GitHub Actions!"
+          echo "Running on branch: ${{ github.ref }}"
+          uname -a
